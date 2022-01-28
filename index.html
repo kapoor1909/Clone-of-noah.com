@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <title>Noah</title>
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            box-sizing: border-box;
+    
+        }
+
+        button {
+            background: none;
+            border: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .nav-container {
+            display: flex;
+            width: 100%;
+            padding: 0.8rem 6.4rem;
+            position: fixed;
+            z-index: 100;
+        }
+
+        .navigation-bar {
+            display: flex;
+            height: 4.9rem;
+            width: 81.4rem;
+            min-height: auto;
+            max-width: 66.6667%;
+            min-width: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 6.4rem;
+        }
+
+        .logo img {
+            height: 3.125rem;
+            width: 10.4rem;
+        }
+
+        .external-links {
+            display: flex;
+            height: 4.9rem;
+            align-items: center;
+        }
+
+        .external-links a {
+            padding: 0.8rem 1.6rem;
+            margin-right: 2.4rem;
+            font-size: 1.6rem;
+            color: #100F22;
+        }
+
+        .plane-area {
+            width: 100%;
+            height: 4.9rem;
+        }
+
+        .text-container {
+            transform: skewX(20deg) translateX(40%);
+            padding-top: 10rem;
+
+        }
+
+        .large-heading {
+            font-size: 5rem;
+        }
+
+        .medium-text {
+            width: 50%;
+            font-size: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .box-container {
+            width: 40%;
+            height: 2rem;
+            border: 1px solid rgb(177, 177, 177);
+            padding: 1rem 1rem 1.5rem 1rem;
+            border-radius: 5rem;
+        }
+
+        input {
+            border: none;
+        }
+
+        .email-address {
+            font-size: 1.6rem;
+            margin-right: 5rem;
+            padding-top: 0.5rem;
+        }
+
+        .email-address:focus {
+            border: none;
+            outline: none;
+        }
+
+        .join {
+            margin-top: -0.7rem;
+            height: 40px;
+            width: fit-content;
+            font-size: 1.8rem;
+            border-radius: 2rem;
+            padding: 1rem 2rem;
+            float: right;
+            margin-right: -0.5rem;
+
+            background-color: #4A59EA;
+            color: white;
+        }
+
+        /* transform: skewX(20deg) translateX(50%);*/
+
+        /* */
+
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box1,
+        .box5,
+        .box9 {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transform: skewX(-20deg) translateX(-40%);
+            position: absolute;
+            z-index: 10;
+            margin-bottom: 8rem;
+        }
+
+        .box3,
+        .box7,
+        .box11 {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transform: skewX(20deg) translateX(-40%);
+            position: absolute;
+            z-index: 10;
+        }
+
+        .box3 .text-container,
+        .box7 .text-container,
+        .box11 .text-container,
+        .box3 .wrapper-grid {
+            transform: skewX(-20deg) translateX(45%);
+        }
+
+        .box2,
+        .box4,
+        .box6,
+        .box8,
+        .box10,
+        .box12 {
+            width: 100%;
+            height: 100%;
+            float: right;
+            z-index: 0;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        .box2 {
+            background-image: url("./images/7.png");
+        }
+
+        .box4 {
+            background-image: url("./images/2.png");
+        }
+
+        .box6 {
+            background-image: url("./images/3.png");
+        }
+
+        .box8 {
+            background-image: url("./images/7.png");
+        }
+
+        .box10 {
+            background-image: url("./images/8.png");
+        }
+
+        .box12 {
+            background-image: url("./images/9.png");
+        }
+
+        .header {
+            position: fixed;
+            top: 6rem;
+            z-index: 100;
+            width: 100%;
+            background-color: #f1f1f1;
+            display: none;
+        }
+        .progress-bar {
+            height: 4px;
+            background: rgb(91, 192, 222);
+            background: linear-gradient(90deg, rgba(91, 192, 222, 1) 0%, rgba(147, 219, 238, 1) 20%, rgba(51, 90, 214, 1) 51%, rgba(140, 100, 217, 1) 100%, rgba(91, 192, 222, 1) 100%);
+            width: 0%;
+            z-index: 100;
+        }
+
+        /* GRID */
+        .wrapper-grid {
+            padding-top: 15rem;
+            display: grid;
+            justify-content: start;
+            grid-template-columns: repeat(3, minmax(min-content, 20rem));
+            grid-template-rows: repeat(2, minmax(15rem, min-content));
+            grid-gap: 2rem;
+        }
+
+        .container-grid {
+            padding: 2rem 2rem 0 2rem;
+            box-shadow: 2px 0px 14px -1px rgba(24, 22, 22, 0.281);
+            -webkit-box-shadow: 2px 0px 14px -1px rgba(24, 22, 22, 0.281);
+            -moz-box-shadow: 2px 0px 14px -1px rgba(24, 22, 22, 0.281);
+            border-radius: 10px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-top: 0.3rem;
+            color: white;
+        }
+
+        .blue-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            background-color: blue;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            color: black;
+            margin: 1rem 0;
+        }
+
+        .content {
+            font-size: 1.4rem;
+            color: black;
+        }
+
+        footer {
+            padding: 4rem 4rem 0 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-top,
+        .footer-bottom {
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+        }
+
+        .footer-top .links {
+            font-size: 1.6rem;
+        }
+
+        .footer-top .links a {
+            margin-right: 1rem;
+            color: black;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+        }
+
+        .copyright {
+            font-size: 1.4rem;
+        }
+
+        .social-icons {
+            font-size: 2rem;
+            display: flex;
+            align-content: center;
+        }
+
+        .social-icons i {
+            margin-top: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        @media(max-width:1300px) {
+            html {
+                font-size: 9px;
+            }
+
+            /* .wrapper-grid{
+                grid-template-columns: repeat(2,minmax(min-content, 29rem));
+                grid-template-rows: repeat(3,minmax(min-content, 30rem));
+            } */
+        }
+
+        @media(max-width:1150px) {
+            html {
+                font-size: 8px;
+            }
+
+            /* .wrapper-grid{
+                grid-template-columns: repeat(2,minmax(min-content, 29rem));
+                grid-template-rows: repeat(3,minmax(min-content, 30rem));
+            } */
+        }
+
+        @media(max-width:1020px) {
+            html {
+                font-size: 7.5px;
+            }
+        }
+
+        @media(max-width:950px) {
+
+            .wrapper-grid {
+                grid-template-columns: repeat(2, minmax(min-content, 20rem));
+                grid-template-rows: repeat(3, minmax(15rem, min-content));
+            }
+
+            .large-heading {
+                font-size: 4rem;
+            }
+
+            .box3 .text-container,
+            .box7 .text-container,
+            .box11 .text-container {
+                transform: skewX(-20deg) translateX(50%);
+            }
+
+            .email-address {
+                display: none;
+            }
+
+            .box-container {
+                border: 0;
+                margin-left: -200px;
+            }
+        }
+
+        @media(max-width:775px) {
+            .box2,
+        .box4,
+        .box6,
+        .box8,
+        .box10,
+        .box12 {
+            display: none;
+            background-color:white ;
+        }
+
+        .container{
+            height: 75vh;
+        }
+
+        .wrapper-grid {
+                grid-template-columns: repeat(3, minmax(min-content, 20rem));
+                grid-template-rows: repeat(2, minmax(15rem, min-content));
+                
+            }
+            .box1,
+        .box5,
+        .box9,
+        .box3,
+        .box7,
+        .box11 {
+
+        padding-left:25rem ;
+            
+       }
+
+            }
+
+            @media(max-width:775px){
+
+                .box3{
+                    padding-left: 15rem;
+                
+                }
+
+                .join {
+            margin-top: -0.7rem;
+            height: 40px;
+            width: 100rem;
+            font-size: 1.8rem;
+            border-radius: 2rem;
+            padding: 1rem 2rem;
+            float: right;
+            padding-left:75rem;
+
+            background-color: #4A59EA;
+            color: white;
+        }
+
+            .container  .box1,
+            .container .box5,
+            .container.box9,
+            .container .box7,
+            .container  .box11{
+            height: 50vh;
+        }
+
+                 }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+
+        <div class="navigation-bar">
+            <div class="logo">
+                <img src="noah-horizontal.svg" alt="">
+            </div>
+            <div class="external-links">
+                <a href="">Jobs</a>
+                <a href="">Blog</a>
+            </div>
+        </div>
+        <div class="plane-area"></div>
+    </div>
+    <div class="header">
+        <div class="progress-bar" id="myBar"></div>
+
+
+    </div>
+    <div class="container">
+
+        <div class="box1">
+            <div class="text-container">
+                <h1 class="large-heading">Forget everything you know<br> about Banks</h1>
+                <p class="medium-text">At Noah, we believe that your hard earned savings deserve a better opportunity to
+                    grow. We built a mobile-first digital wallet that makes sending, saving, and spending your digital
+                    money
+                    in Bitcoin & Stablecoins seamless.</p>
+                <div class="box-container">
+
+                    <input type="text" placeholder="Email Address" class="email-address">
+
+
+                    <button class="join">Join the waitlist</button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box2">
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="box3">
+            <div class="wrapper-grid">
+                <div class="container-grid">
+                    <div class="blue-icon">
+                        <i class="icon"><i class="ri-lock-fill"></i></i>
+                    </div>
+                    <h2 class="title">Earn on your savings</h2>
+                    <p class="content">Earn up to 10% every year on your savings when you save with us.</p>
+
+
+                </div>
+                <div class="container-grid">
+                    <div class="blue-icon">
+                        <i class="icon"><i class="ri-lock-fill"></i></i>
+                    </div>
+                    <h2 class="title">Earn on your savings</h2>
+                    <p class="content">Earn up to 10% every year on your savings when you save with us.</p>
+
+
+                </div>
+                <div class="container-grid">
+                    <div class="blue-icon">
+                        <i class="icon"><i class="ri-lock-fill"></i></i>
+                    </div>
+                    <h2 class="title">Earn on your savings</h2>
+                    <p class="content">Earn up to 10% every year on your savings when you save with us.</p>
+
+
+                </div>
+                <div class="container-grid">
+                    <div class="blue-icon">
+                        <i class="icon"><i class="ri-lock-fill"></i></i>
+                    </div>
+                    <h2 class="title">Earn on your savings</h2>
+                    <p class="content">Earn up to 10% every year on your savings when you save with us.</p>
+
+
+                </div>
+                <div class="container-grid">
+                    <div class="blue-icon">
+                        <i class="icon"><i class="ri-lock-fill"></i></i>
+                    </div>
+                    <h2 class="title">Earn on your savings</h2>
+                    <p class="content">Earn up to 10% every year on your savings when you save with us.</p>
+
+
+                </div>
+                <div class="container-grid">
+                    <div class="blue-icon">
+                        <i class="icon"><i class="ri-lock-fill"></i></i>
+                    </div>
+                    <h2 class="title">Earn on your savings</h2>
+                    <p class="content">Earn up to 10% every year on your savings when you save with us.</p>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="box4">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="box5">
+            <div class="text-container">
+                <h1 class="large-heading">You don’t need a bank, <br>you need Noah</h1>
+                <p class="medium-text">We believe every adult on the planet deserves a better place to grow their
+                    wealth, whilst keeping full ownership of it. Noah provides a powerful, new digital wallet
+                    alternative where you can save, send and spend your Bitcoins and Stablecoins easier than ever
+                    before.
+                </p>
+                <div class="box-container">
+
+                    <input type="text" placeholder="Email Address" class="email-address">
+
+
+                    <button class="join">Join the waitlist</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="box6">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="box7">
+            <div class="text-container">
+                <h1 class="large-heading">Earn every time you <br>save</h1>
+                <p class="medium-text">Get a bank-beating rate of up to ~10% per year on your savings through Noah.
+                    Interest is calculated daily and paid weekly. Withdraw anytime if needed, no lock-up on your money.
+                </p>
+                <div class="box-container">
+
+                    <input type="text" placeholder="Email Address" class="email-address">
+
+
+                    <button class="join">Join the waitlist</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="box8">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="box9">
+            <div class="text-container">
+                <h1 class="large-heading">Using your Noah <br> Rewards</h1>
+                <p class="medium-text">Redeem your Noah Rewards points for gift cards from major retailers or buy
+                    airtime and date for yourself or your friends. Alternatively, use your Noah rewards to boost your
+                    earning on your savings account.
+                </p>
+                <div class="box-container">
+
+                    <input type="text" placeholder="Email Address" class="email-address">
+
+
+                    <button class="join">Join the waitlist</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="box10">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="box11">
+            <div class="text-container">
+                <h1 class="large-heading">How Noah keeps your<br> money safe
+                </h1>
+                <p class="medium-text">We’re serious about security. We store deposits in offline cold storage vaults,
+                    and our servers are under 24/7 surveillance. We also encrypt all sensitive account information and
+                    use password-less systems and multi-factor authentication, so your account’s totally secure.
+                </p>
+                <div class="box-container">
+
+                    <input type="text" placeholder="Email Address" class="email-address">
+
+
+                    <button class="join">Join the waitlist</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="box12">
+
+        </div>
+    </div>
+    <footer>
+        <div class="footer-top">
+            <div class="logo">
+                <img src="noah-horizontal.svg" alt="">
+            </div>
+            <div class="links">
+                <a href="">Terms and Conditions</a>
+                <a href="">Cookie Policy</a>
+                <a href="">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">Copyright © 2021 Noah Savings (UK) Ltd.</p>
+            <div class="social-icons">
+                <i class="ri-linkedin-box-fill"></i>
+                <i class="ri-twitter-fill"></i>
+                <i class="ri-telegram-fill"></i>
+                <i class="ri-mail-fill"></i>
+            </div>
+        </div>
+
+
+    </footer>
+
+
+    <script type="text/javascript">
+
+        $(document).scroll(function () {
+            var height = $(".navigation-bar").height();
+
+            if ($(this).scrollTop() > height) {
+                $(".nav-container").css("background-color", "white");
+                $(".header").css("display", "block");
+            } else {
+                $(".nav-container").css("background-color", "transparent");
+                $(".header").css("display", "none");
+            }
+
+        });
+
+        window.onscroll = function () { myFunction() };
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+</body>
+
+</html>
